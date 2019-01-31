@@ -113,6 +113,8 @@ class FileBrowseField(CharField):
     def get_prep_value(self, value):
         if not value:
             return value
+        if isinstance(value, basestring):
+            return value
         return value.path
 
     def value_to_string(self, obj):
